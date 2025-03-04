@@ -200,26 +200,25 @@ const VidSec = () => {
     
         if (!document.fullscreenElement) {
             if (videoWrapper.requestFullscreen) {
-                videoWrapper.requestFullscreen();
-            } else if (videoWrapper.mozRequestFullScreen) { // Firefox
-                videoWrapper.mozRequestFullScreen();
-            } else if (videoWrapper.webkitRequestFullscreen) { // Chrome, Safari, Opera
-                videoWrapper.webkitRequestFullscreen();
-            } else if (videoWrapper.msRequestFullscreen) { // IE/Edge
-                videoWrapper.msRequestFullscreen();
-            }
+                videoWrapper.requestFullscreen().then(() => {
+                    if (screen.orientation && screen.orientation.lock) {
+                        screen.orientation.lock("landscape").catch(err => {
+                            console.warn("تعذر قفل الاتجاه:", err);
+                        });
+                    }
+                });
+            } 
         } else {
             if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) { // Firefox
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) { // IE/Edge
-                document.msExitFullscreen();
+                document.exitFullscreen().then(() => {
+                    if (screen.orientation && screen.orientation.unlock) {
+                        screen.orientation.unlock();
+                    }
+                });
             }
         }
     };
+    
     
 
 
