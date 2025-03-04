@@ -1,0 +1,19 @@
+.TopicsMobSec {
+    display: none;
+}
+.TopicsMobSec .topic-list{
+    padding: 0px;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+@media screen and ( max-width: 992px ) {
+    .TopicsMobSec{
+        display: block;
+        grid-area: unset; 
+        margin-block: 2rem;
+        
+    }
+}

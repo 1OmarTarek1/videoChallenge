@@ -1,0 +1,308 @@
+/* 🔴 Video Wrapper */
+.video-wrapper {
+    grid-area: 1 / 1 / auto / 5; 
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background: black;
+}
+
+/* 🖥️ Main Video */
+.main-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 5px;
+}
+
+/* 🎛️ Controls Wrapper */
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 15px;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.time-display{
+    flex: 1;
+}
+.time-display span{
+    color: #ffffffd7;
+    font-weight: 200; 
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* 🖥️ Hover Controls */
+.vidHoverControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.vidHoverControls button:first-child,
+.vidHoverControls button:nth-child(2),
+.vidHoverControls button:last-child {
+    height: 100%;
+    opacity: 0.5;
+}
+
+.vidHoverControls button:first-child,
+.vidHoverControls button:last-child {
+    width: 30%;
+    font-size: 30px;
+}
+
+.vidHoverControls button:nth-child(2) {
+    font-size: 50px;
+    width: 40%;
+}
+
+/* 🎯 Show controls when hovering over video */
+.video-wrapper:has(.video-paused) .vidHoverControls,
+.video-wrapper:has(.video-paused) .video-controls,
+.video-wrapper:has(.video-paused) .seek-bar{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.video-wrapper:hover .vidHoverControls,
+.video-wrapper:hover .video-controls,
+.video-wrapper:hover .seek-bar {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Start Image */
+.video-wrapper .imgWrapper.playing-firstTime{
+    opacity: 0;
+    visibility: hidden;
+}
+.video-wrapper .imgWrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0s ease-in-out;
+}
+.video-wrapper .imgWrapper .startImg{
+    position: absolute;
+    width: 101%;
+    height: 101%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(50%) blur(2px);
+}
+.imgWrapper .btnImg{
+    background-color: #fff;
+    height: 70px;
+    width: 70px;
+    border: none;
+    border-radius: 50%;
+    color: red;
+    font-size: 1.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+}
+.imgWrapper .btnImg svg{
+    position: relative;
+    top: -2px;
+    left: 2px;
+}
+
+/* 🔘 Control Buttons */
+.vidHoverControls button,
+.video-controls button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.video-controls button:hover {
+    color: red;
+}
+
+/* 📍 Seek Bar (Progress Bar) */
+.seek-bar {
+    z-index: 1;
+    bottom: 42px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    appearance: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.1s ease-in-out;
+    background: linear-gradient(to right, red 0%, red var(--progress), rgba(255, 255, 255, 0.445) var(--progress), rgba(255, 255, 255, 0.445) 100%);
+    border-radius: 2px;
+}
+
+/* 🔴 Seek Bar Thumb (Draggable part) */
+.seek-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 11px;
+    height: 11px;
+    background: rgb(211, 210, 210);
+    border-radius: 50%;
+    transition: all 0.1s ease-in-out;
+}
+
+/* 🎯 Change thumb size on interaction */
+.seek-bar:active::-webkit-slider-thumb {
+    transform: scale(1.3);
+}
+
+/* 🔊 Volume Control */
+.volume-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* 🔊 Volume Icon */
+.volume-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+}
+
+.volume-icon:hover {
+    color: red;
+}
+
+/* 🔊 Volume Slider */
+.volume-slider {
+    position: relative;
+    width: 0px;
+    height: 3px;
+    cursor: pointer;
+    background: #dddddd79;
+    border-radius: 3px;
+    appearance: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.volume-slider::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(to right, red 0%, red var(--volume), #dddddd21 var(--volume), #dddddd21 100%);    
+}
+
+
+/* 🎯 Show Volume Slider on Hover */
+.volume-container:hover .volume-slider {
+    width: 60px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 11px;
+    height: 11px;
+    bottom: 4px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.volume-slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+
+/* 🎬 Hide default video controls */
+video::-webkit-media-controls {
+    display: none !important;
+}
+
+
+/* 🎬 In Cinema mode */
+.course-content:has(.video-wrapper.cinema-mode) {
+    display: flex;
+    flex-direction: column;
+}
+/* 📺 In fullscreen mode, hide the mouse cursor */
+.video-wrapper:fullscreen {
+    cursor: none;
+}
+
+/* ✅ Show controls when moving the mouse or touching the screen */
+.video-wrapper:fullscreen .seek-bar,
+.video-wrapper:fullscreen .video-controls,
+.video-wrapper:fullscreen .vidHoverControls {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* ⏳ Hide controls automatically after inactivity */
+.video-wrapper:fullscreen:not(:has(.video-paused)).hide-controls .seek-bar,
+.video-wrapper:fullscreen:not(:has(.video-paused)).hide-controls .video-controls,
+.video-wrapper:fullscreen:not(:has(.video-paused)).hide-controls .vidHoverControls {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@media screen and ( max-width: 992px ) {
+    .video-wrapper{
+        width: calc(100% + 40px);
+        margin-inline: -20px;
+        border-radius: 0;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    /* .video-wrapper.isPlaying{
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    } */
+    .cinemaBtn{display: none;}
+}

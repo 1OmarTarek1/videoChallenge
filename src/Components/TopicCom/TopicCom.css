@@ -1,0 +1,60 @@
+/* Topic List */
+.topic-list {
+    flex: 1;
+    background: #fff;
+    padding: 15px;
+    border-radius: 0px;
+    border: 2px solid #dedede93;
+    margin-top: 20px;
+}
+
+.topic-list h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+
+.course-description {
+    color: #777;  /* Adjust color for readability */
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+
+.topic-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.topic-list li {
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.course-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.course-meta {
+    display: flex;
+    gap: 8px;
+}
+
+.course-meta .questions {
+    background: transparent;
+    color: #28a745;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.course-meta .time {
+    background: #e0f7e9;
+    color: #d9534f;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 10px;
+}
