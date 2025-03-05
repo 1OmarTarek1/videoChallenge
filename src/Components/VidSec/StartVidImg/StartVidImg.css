@@ -1,0 +1,57 @@
+/* Start Image */
+.video-wrapper .imgWrapper.playing-firstTime{
+    opacity: 0;
+    visibility: hidden;
+}
+.video-wrapper .imgWrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0s ease-in-out;
+}
+.video-wrapper .imgWrapper .startImg{
+    position: absolute;
+    width: 102%;
+    height: 102%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(50%) blur(2px);
+}
+
+.imgWrapper .btnImg{
+    background-color: #fff;
+    height: 70px;
+    width: 70px;
+    border: none;
+    border-radius: 50%;
+    color: red;
+    font-size: 1.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+}
+.imgWrapper .btnImg svg{
+    position: relative;
+    top: -2px;
+    left: 2px;
+}
+
+
+@media (max-width:768px) {
+    .imgWrapper .btnImg{
+        height: 60px;
+        width: 60px;
+        font-size: 1.7rem;
+    }
+    .imgWrapper .btnImg svg{
+        position: relative;
+        top: -2px;
+        left: 2px;
+    }
+}

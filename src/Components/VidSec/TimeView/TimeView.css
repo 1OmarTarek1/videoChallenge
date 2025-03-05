@@ -1,0 +1,9 @@
+.time-display{
+    flex: 1;
+}
+.time-display span{
+    color: #ffffffd7;
+    font-weight: 200; 
+    font-size: 12px;
+    margin-left: 5px;
+}

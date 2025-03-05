@@ -1,4 +1,6 @@
+import { FaRegFileAlt } from 'react-icons/fa';
 import './TopicCom.css';
+import { MdLockOutline } from 'react-icons/md';
 
 const TopicCom = ({ title, ulData, para, id }) => {
     return (
@@ -8,18 +10,56 @@ const TopicCom = ({ title, ulData, para, id }) => {
                 {para}
             </p>
             <ul>
-                <li>{ulData.oneLi}</li>
-                <li>{ulData.twoLi}</li>
+                <li>
+                    <span>
+                        <FaRegFileAlt />
+                        {ulData.oneLi}
+                    </span>
+                    <span></span>
+                <MdLockOutline />
+                </li>
+                <li>
+                    <span>
+                        <FaRegFileAlt />
+                        {ulData.twoLi}
+                    </span>
+                    <span><MdLockOutline /></span>
+                </li>
                 <li className="course-item">
-                    <span className="course-title">{ulData.threeLi}</span>
+                    <span className="course-title">
+                        <FaRegFileAlt />
+                        {ulData.threeLi}
+                    </span>
                     <div className="course-meta">
-                        <span className="questions">{ulData.qus}</span>
-                        <span className="time">{ulData.time}</span>
+                        <span className="questions">
+                            {ulData.qus}
+                        </span>
+                        <span className="time">
+                            {ulData.time}
+                        </span>
                     </div>
                 </li>
-                <li>{ulData.fourLi}</li>
-                <li>{ulData.fiveLi}</li>
-                <li>{ulData.sixLi}</li>
+                <li>
+                    <span>
+                        <FaRegFileAlt />
+                        {ulData.fourLi}
+                    </span>
+                    <span><MdLockOutline /></span>
+                </li>
+                <li>
+                    <span>
+                        <FaRegFileAlt />
+                        {ulData.fiveLi}
+                    </span>
+                    <span><MdLockOutline /></span>
+                </li>
+                <li>
+                    <span>
+                        <FaRegFileAlt />
+                        {ulData.sixLi}
+                    </span>
+                    <span><MdLockOutline /></span>
+                </li>
             </ul>
         </div>
     );

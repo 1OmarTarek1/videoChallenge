@@ -1,0 +1,39 @@
+/* Topics Section */
+.course-topics {
+    background: #fff;
+    border-radius: 0px;
+}
+
+#MOBprog{
+    display: none;
+}
+.progTitle{
+    margin-bottom: 30px;
+}
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    margin-block: 10px;
+    background: #eee;
+    border-radius: 10px;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background: #6abd8a;
+    border-radius: 10x;
+}
+
+@media screen and ( max-width: 992px ) {
+    .course-topics{
+        margin: 20px 5px;
+    }
+    #PCprog{
+        display: none;
+    }
+    #MOBprog{
+        display: block;
+        margin: 20px;
+    }
+}

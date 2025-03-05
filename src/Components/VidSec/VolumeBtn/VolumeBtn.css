@@ -1,0 +1,77 @@
+/* 🔊 Volume Control */
+.volume-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* 🔊 Volume Icon */
+.volume-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+}
+
+.volume-icon:hover {
+    color: red;
+}
+/* 🔊 Volume Slider */
+.volume-slider {
+    position: relative;
+    width: 0px;
+    height: 3px;
+    cursor: pointer;
+    background: #dddddd79;
+    border-radius: 3px;
+    appearance: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.volume-slider::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(to right, red 0%, red var(--volume), #dddddd21 var(--volume), #dddddd21 100%);    
+}
+
+/* 🎯 Show Volume Slider on Hover */
+.volume-container:hover .volume-slider {
+    width: 50px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    bottom: 3px;
+    background: rgb(236, 232, 232);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.volume-slider::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+}
+.volume-slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+    .volume-slider {
+        width: 50px;
+        opacity: 1;
+        visibility: visible;
+    }
+}

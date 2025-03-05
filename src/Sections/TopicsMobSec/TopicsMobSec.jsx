@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MDBAccordion, MDBAccordionItem } from 'mdb-react-ui-kit';
+import { ProgressBar, TopicCom } from '../../Components';
 import './TopicsMobSec.css'
 
 
@@ -12,79 +13,58 @@ const TopicsMobSec = () => {
     return (
         <>
         <div className="TopicsMobSec">
-            <div className="course-topics">
-            <h5 className="mb-0">Topics for This Course</h5>
-                <div className="progress-bar">
-                    <div className="progress" style={{ width: "65%" }}></div>
-                </div>
-                <p>65% Completed</p>
-            </div>
+            <ProgressBar id={"MOBprog"} />
             <MDBAccordion active={active} onChange={(itemId) => setActive(itemId)}>
                 <MDBAccordionItem collapseId={1} headerTitle='Course Introduction'>
-                    <div className="topic-list">
-                        <h3>Week 1 - 4</h3>
-                        <p className="course-description">
-                            Advanced story telling techniques for writers: Personas, Characters & Plots
-                        </p>
-                        <ul>
-                            <li>📖 Introduction</li>
-                            <li>📖 Course Overview</li>
-                            <li className="course-item">
-                                <span className="course-title">Course Overview</span>
-                                <div className="course-meta">
-                                    <span className="questions">0 QUESTIONS</span>
-                                    <span className="time">10 MINUTES</span>
-                                </div>
-                            </li>
-                            <li>📂 Course Exercise / Reference Files</li>
-                            <li>💻 Code Editor Installation</li>
-                            <li>🖥️ Embedding PHP in HTML</li>
-                        </ul>
-                    </div>
+                    <TopicCom  
+                    title={"Week 1 - 4"}
+                    para={"Advanced storytelling techniques for writers: Personas, Characters & Plots"}
+                    ulData={{
+                        oneLi: "Introduction",
+                        twoLi: "Course Overview",
+                        threeLi: "Course Overview",
+                        qus:"0 QUESTIONS",
+                        time:"10 MINUTES",
+                        fourLi: "Course Exercise / Reference Files",
+                        fiveLi: "Code Editor Installation",
+                        sixLi: "Embedding PHP in HTML"
+                    }}
+                    id={"week14"}
+                    />
                 </MDBAccordionItem>
                 <MDBAccordionItem collapseId={2} headerTitle='JavaScript Language Basics'>
-                    <div className="topic-list">
-                        <h3>Week 5 - 8</h3>
-                        <p className="course-description">
-                            Advanced story telling techniques for writers: Personas, Characters & Plots
-                        </p>
-                        <ul>
-                            <li>📖 Defining Functions</li>
-                            <li>📖 Function Parameters</li>
-                            <li className="course-item">
-                                <span className="course-title">Course Overview</span>
-                                <div className="course-meta">
-                                    <span className="questions">0 QUESTIONS</span>
-                                    <span className="time">10 MINUTES</span>
-                                </div>
-                            </li>
-                            <li>✅ Return Values from Functions</li>
-                            <li>🌍 Global Variable and Scope</li>
-                            <li>🔢 Constants</li>
-                        </ul>
-                    </div>
+                    <TopicCom  
+                    title={"Week 5 - 8"}
+                    para={"Advanced story telling techniques for writers: Personas, Characters & Plots"}
+                    ulData={{
+                        oneLi: "Defining Functions",
+                        twoLi: "Function Parameters",
+                        threeLi: "Course Overview",
+                        qus:"0 QUESTIONS",
+                        time:"15 MINUTES",
+                        fourLi: "Return Values from Functions",
+                        fiveLi: "Global Variable and Scope",
+                        sixLi: "Constants"
+                    }}
+                    id={"week58"}
+                    />
                 </MDBAccordionItem>
                 <MDBAccordionItem collapseId={3} headerTitle='Components & Databinding'>
-                    <div className="topic-list">
-                        <h3>Week 5 - 8</h3>
-                        <p className="course-description">
-                            Advanced story telling techniques for writers: Personas, Characters & Plots
-                        </p>
-                        <ul>
-                            <li>📖 Defining Functions</li>
-                            <li>📖 Function Parameters</li>
-                            <li className="course-item">
-                                <span className="course-title">Course Overview</span>
-                                <div className="course-meta">
-                                    <span className="questions">0 QUESTIONS</span>
-                                    <span className="time">10 MINUTES</span>
-                                </div>
-                            </li>
-                            <li>✅ Return Values from Functions</li>
-                            <li>🌍 Global Variable and Scope</li>
-                            <li>🔢 Constants</li>
-                        </ul>
-                    </div>
+                    <TopicCom  
+                    title={"Week 9 - 12"}
+                    para={"Advanced story telling techniques for writers: Personas, Characters & Plots"}
+                    ulData={{
+                        oneLi: "Defining Functions",
+                        twoLi: "Function Parameters",
+                        threeLi: "Course Overview",
+                        qus:"0 QUESTIONS",
+                        time:"15 MINUTES",
+                        fourLi: "Return Values from Functions",
+                        fiveLi: "Global Variable and Scope",
+                        sixLi: "Constants"
+                    }}
+                    id={"week912"}
+                    />
                 </MDBAccordionItem>
             </MDBAccordion>
         </div>

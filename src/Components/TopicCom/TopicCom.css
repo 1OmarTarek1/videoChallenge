@@ -4,7 +4,7 @@
     background: #fff;
     padding: 15px;
     border-radius: 0px;
-    border: 2px solid #dedede93;
+    border: 1px solid #dedede93;
     margin-top: 20px;
 }
 
@@ -17,7 +17,9 @@
 .course-description {
     color: #777;  /* Adjust color for readability */
     font-size: 14px;
+    padding-bottom: 10px;
     margin-bottom: 10px;
+    border-bottom: 1px solid #dedede93;
 }
 
 
@@ -27,8 +29,25 @@
 }
 
 .topic-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 8px 0;
     font-size: 14px;
+    padding-block: 15px;
+    border-bottom: 1px solid #dedede93;
+}
+.topic-list :first-child {
+    padding-top: 0;
+}
+.topic-list :last-child {
+    border: none;
+    padding-bottom: 0;
+}
+.topic-list li svg{
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
 }
 
 .course-item {

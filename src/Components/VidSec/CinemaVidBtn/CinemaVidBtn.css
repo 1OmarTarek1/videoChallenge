@@ -1,0 +1,13 @@
+/* 🎬 In Cinema mode */
+.course-content:has(.video-wrapper.cinema-mode) {
+    display: flex;
+    flex-direction: column;
+}
+/* 📺 In fullscreen mode, hide the mouse cursor */
+.video-wrapper:fullscreen {
+    cursor: none;
+}
+
+@media screen and ( max-width: 992px ) {
+    .cinemaBtn{display: none;}
+}
