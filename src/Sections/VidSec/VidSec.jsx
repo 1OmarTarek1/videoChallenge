@@ -130,15 +130,6 @@ const VidSec = () => {
         }
     };
 
-    const handleDoubleClick = () => {
-        const videoWrapper = document.querySelector(".video-wrapper");
-
-        if (!document.fullscreenElement) {
-            videoWrapper.requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-    };
 
     return (
         <div 
@@ -158,7 +149,6 @@ const VidSec = () => {
                 src={mainVid}
                 type="video/mp4"
                 onClick={handleVideoClick}
-                onDoubleClick={handleDoubleClick}
                 controls={false}
                 controlsList="nodownload nofullscreen noremoteplayback"
             >
@@ -167,7 +157,6 @@ const VidSec = () => {
             <SeekBar videoRef={videoRef} />
             <HoverLayout 
                 videoRef={videoRef} 
-                handleDoubleClick={handleDoubleClick} 
                 handleVideoClick={handleVideoClick} 
                 isEnded={isEnded} 
                 isPlaying={isPlaying} 
@@ -192,7 +181,7 @@ const VidSec = () => {
                 <SettingBtn />
                 <SmlVidBtn videoRef={videoRef} />
                 <CinemaVidBtn setIsCinemaMode={setIsCinemaMode} />
-                <FullScrnVidBtn isFullScreen={isFullScreen} />
+                <FullScrnVidBtn isFullScreen={isFullScreen} videoRef={videoRef} />
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import { MdReplay } from "react-icons/md";
 import { IoIosPause, IoIosPlay } from "react-icons/io";
 import "./HoverLayout.css";
 
-const HoverLayout = ({ videoRef, handleDoubleClick, handleVideoClick, isEnded, setIsEnded, isPlaying, setIsPlaying }) => {
+const HoverLayout = ({ videoRef, handleVideoClick, isEnded, setIsEnded, isPlaying, setIsPlaying }) => {
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (!videoRef.current) return;
@@ -38,7 +38,7 @@ const HoverLayout = ({ videoRef, handleDoubleClick, handleVideoClick, isEnded, s
     }, [videoRef,isPlaying,isEnded,setIsEnded,setIsPlaying]);
 
     return (
-        <div className="vidHoverControls" onDoubleClick={handleDoubleClick}>
+        <div className="vidHoverControls" >
             <button onClick={() => (videoRef.current.currentTime -= 5)}>
                 <TbRewindForward5 style={{ transform: "rotate(-180deg)" }} />
             </button>
