@@ -46,32 +46,49 @@ const VidSec = () => {
 
     useEffect(() => {
         const video = videoRef.current;
-
-        const updateProgress = () => {
-            if (video && video.duration) {
-                setCurrentTime(video.currentTime);
-            }
+        if (!video) return;
+    
+        let animationFrameId;
+    
+        const updateTime = () => {
+            setCurrentTime(video.currentTime);
+            setDuration(video.duration);
+            setIsEnded(video.currentTime >= video.duration); // ✅ Check if video ended
         };
-
-        const updateDuration = () => {
-            if (video) setDuration(video.duration);
+    
+        const updateProgressSmoothly = () => {
+            setCurrentTime(video.currentTime);
+            animationFrameId = requestAnimationFrame(updateProgressSmoothly);
         };
-
+    
+        const handleDragStart = () => {
+            cancelAnimationFrame(animationFrameId); // Stop animation during drag
+        };
+    
+        const handleDragEnd = () => {
+            updateTime(); // Ensure final update
+            animationFrameId = requestAnimationFrame(updateProgressSmoothly); // Resume smooth updates
+        };
+    
         const handleVideoEnd = () => {
-            setIsPlaying(false);
-            setIsEnded(true);
+            setIsEnded(true); // ✅ Mark video as ended
         };
-
-        if (video) {
-            video.addEventListener("timeupdate", updateProgress);
-            video.addEventListener("loadedmetadata", updateDuration);
-            video.addEventListener("ended", handleVideoEnd);
-        }
-
+    
+        video.addEventListener("timeupdate", updateTime);
+        video.addEventListener("loadedmetadata", updateTime);
+        video.addEventListener("seeking", handleDragStart);
+        video.addEventListener("seeked", handleDragEnd);
+        video.addEventListener("ended", handleVideoEnd); // ✅ Listen for video end
+    
+        animationFrameId = requestAnimationFrame(updateProgressSmoothly); // Start smooth updates
+    
         return () => {
-            video?.removeEventListener("timeupdate", updateProgress);
-            video?.removeEventListener("loadedmetadata", updateDuration);
-            video?.removeEventListener("ended", handleVideoEnd);
+            video.removeEventListener("timeupdate", updateTime);
+            video.removeEventListener("loadedmetadata", updateTime);
+            video.removeEventListener("seeking", handleDragStart);
+            video.removeEventListener("seeked", handleDragEnd);
+            video.removeEventListener("ended", handleVideoEnd); // ✅ Cleanup
+            cancelAnimationFrame(animationFrameId);
         };
     }, []);
 
@@ -150,11 +167,17 @@ const VidSec = () => {
                 type="video/mp4"
                 onClick={handleVideoClick}
                 controls={false}
+                onTimeUpdate={() => setCurrentTime(videoRef.current.currentTime)} 
                 controlsList="nodownload nofullscreen noremoteplayback"
             >
+
                 Your browser does not support the video tag.
             </video>
-            <SeekBar videoRef={videoRef} />
+            <SeekBar 
+            videoRef={videoRef} 
+            currentTime={currentTime} 
+            setCurrentTime={setCurrentTime} 
+            />
             <HoverLayout 
                 videoRef={videoRef} 
                 handleVideoClick={handleVideoClick} 

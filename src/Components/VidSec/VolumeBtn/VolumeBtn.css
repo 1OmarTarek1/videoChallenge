@@ -45,6 +45,12 @@
     visibility: visible;
 }
 
+.volume-slider.visible {
+    width: 50px;
+    opacity: 1;
+    visibility: visible;
+}
+
 .volume-slider::-webkit-slider-thumb {
     position: relative;
     -webkit-appearance: none;
