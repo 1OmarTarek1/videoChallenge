@@ -66,13 +66,13 @@ const SeekBar = ({ videoRef, currentTime, setCurrentTime }) => {
                 style={{ "--progress": `${progress}%` }}
             />
             
-            {previewTime !== null && hoverPosition !== null && (
+            {/* {previewTime !== null && hoverPosition !== null && (
                 <div className="preview-box" style={{ left: `${hoverPosition}%` }}>
                     {thumbnail && <img src={thumbnail} alt="Preview" />}
                     <p>{formatTime(previewTime)}</p>
                 </div>
             )}
-            <canvas ref={thumbnailCanvas} style={{ display: "none" }} />
+            <canvas ref={thumbnailCanvas} style={{ display: "none" }} /> */}
         </div>
     );
 };
