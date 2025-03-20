@@ -41,23 +41,39 @@ const SeekBar = ({ videoRef, currentTime, setCurrentTime }) => {
         }
     };
 
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    };
+
     return (
-        <input
-            type="range"
-            className="seek-bar"
-            min="0"
-            max="100"
-            step="0.001"
-            value={progress}
-            onMouseDown={handleSeekStart}
-            onMouseMove={isDragging ? handleSeek : null}
-            onMouseUp={handleSeekEnd}
-            onTouchStart={handleSeekStart}
-            onTouchMove={handleSeek}
-            onTouchEnd={handleSeekEnd}
-            onInput={handleSeek}
-            style={{ "--progress": `${progress}%` }}
-        />
+        <div className="seek-bar-container">
+            <input
+                type="range"
+                className="seek-bar"
+                min="0"
+                max="100"
+                step="0.001"
+                value={progress}
+                onMouseDown={handleSeekStart}
+                onMouseMove={isDragging ? handleSeek : null}
+                onMouseUp={handleSeekEnd}
+                onTouchStart={handleSeekStart}
+                onTouchMove={handleSeek}
+                onTouchEnd={handleSeekEnd}
+                onInput={handleSeek}
+                style={{ "--progress": `${progress}%` }}
+            />
+            
+            {previewTime !== null && hoverPosition !== null && (
+                <div className="preview-box" style={{ left: `${hoverPosition}%` }}>
+                    {thumbnail && <img src={thumbnail} alt="Preview" />}
+                    <p>{formatTime(previewTime)}</p>
+                </div>
+            )}
+            <canvas ref={thumbnailCanvas} style={{ display: "none" }} />
+        </div>
     );
 };
 

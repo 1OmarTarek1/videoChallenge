@@ -125,6 +125,10 @@ const VidSec = () => {
         };
     }, []);
 
+    const isDesktop = () => {
+        return !/Mobi|Android|iPhone|iPad|iPod|Opera Mini|BlackBerry|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    };
+    
 
 
     const handleVideoClick = () => {
@@ -155,7 +159,7 @@ const VidSec = () => {
                 ${ isPlaying &&  'isPlaying'}
                 ${ isCinemaMode  &&  'cinema-mode'}
                 ${ isFullScreen  &&  'FullScreen-mode'}
-            `}>
+        `}>
             <StartVidImg 
                 isPlayingFirstTime={isPlayingFirstTime} 
                 handleVideoClick={handleVideoClick} 
@@ -165,14 +169,12 @@ const VidSec = () => {
                 className={` ${!isPlaying && 'video-paused'} main-video`}
                 src={mainVid}
                 type="video/mp4"
-                onClick={handleVideoClick}
+                onClick={isDesktop() ? handleVideoClick : undefined}
                 controls={false}
-                onTimeUpdate={() => setCurrentTime(videoRef.current.currentTime)} 
+                onTimeUpdate={() => setCurrentTime(videoRef.current.currentTime)}
                 controlsList="nodownload nofullscreen noremoteplayback"
-            >
+            >Your browser does not support the video tag. </video>
 
-                Your browser does not support the video tag.
-            </video>
             <SeekBar 
             videoRef={videoRef} 
             currentTime={currentTime} 
